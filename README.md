@@ -33,25 +33,4 @@ Les cartes SIM ont un numéro sim , une date d’activation , status ( active , 
  
 
 En fonction du mode de paiement le client doit fournir  un numéro de compte , un numéro de domiciliation, status de la domiciliation (active , non active) ,  nom de la banque  ou numéro de carte de crédit , date d’expiration de la carte de crédit  
-
  
-
-Process d’activation d’ un abonnement / services :  
-
-Zone de texteZone de texteZone de texteZone de texte 
-
-FormeFormeForme 
-
-FormeFormeForme 
-
-FormeFormeFormeFormeFormeZone de texteZone de texte 
-
-Zone de texteZone de texteZone de texte 
-
- 
-
-FormeForme 
-
-Zone de texteZone de texteZone de texteZone de texte 
-
-Zone de texte 
