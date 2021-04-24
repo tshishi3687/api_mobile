@@ -13,5 +13,5 @@ public class CycleDTO implements identifiedDTO<Integer>{
     private Integer id;
     private String tempscycle;
     private Mode_paiementDTO modepaiement;
-    private String information;
+    private Info_bancaireDTO information;
 }

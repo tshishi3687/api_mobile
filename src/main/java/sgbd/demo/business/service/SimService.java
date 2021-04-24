@@ -22,17 +22,13 @@ public class SimService implements CrudService<SimDTO, Integer>{
     private Mapper<SimDTO, Sim> simMapper;
     @Autowired
     private SimRepository simRepository;
-    @Autowired
-    private TelephoneRepository telephoneRepository;
 
     @Override
     public void creat(SimDTO toDTO) throws ElementExisteExeption {
         if(simRepository.existsById(toDTO.getId()))
             throw  new SimExisteExeption(toDTO.getId());
 
-        Sim entity = simMapper.toEntity(toDTO);
-        telephoneRepository.save(entity.getMsisdn());
-        simRepository.save(entity);
+        simRepository.save(simMapper.toEntity(toDTO));
     }
 
     @Override

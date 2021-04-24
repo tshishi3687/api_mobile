@@ -29,8 +29,7 @@ public class SimMapper implements Mapper<SimDTO, Sim>{
                 sim.getCodepuk(),
                 sim.getCodepuk2(),
                 sim.getDatetermination(),
-                sim.getTypecarte(),
-                telephoneMapper.toDTO(sim.getMsisdn())
+                sim.getTypecarte()
         );
     }
 
@@ -48,7 +47,6 @@ public class SimMapper implements Mapper<SimDTO, Sim>{
         sim.setCodepuk2(simDTO.getCodepuk2());
         sim.setDatetermination(simDTO.getDatetermination());
         sim.setTypecarte(simDTO.getTypecarte());
-        sim.setMsisdn(telephoneRepository.getOne(simDTO.getMsisdn().getId()));
         return sim;
     }
 }

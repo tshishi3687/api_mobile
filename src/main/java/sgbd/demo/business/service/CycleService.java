@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sgbd.demo.business.dto.CycleDTO;
 import sgbd.demo.business.mapper.Mapper;
-import sgbd.demo.data_access.entity.Cycle;
+import sgbd.demo.data_access.entity.Cycle_paiement;
 import sgbd.demo.data_access.repository.CycleRepository;
 import sgbd.demo.exeption.CycleExisteExeption;
 import sgbd.demo.exeption.CycleFoundExeption;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class CycleService implements CrudService<CycleDTO, Integer>{
 
     @Autowired
-    private Mapper<CycleDTO, Cycle> cycleMapper;
+    private Mapper<CycleDTO, Cycle_paiement> cycleMapper;
     @Autowired
     private CycleRepository cycleRepository;
 
@@ -32,7 +32,7 @@ public class CycleService implements CrudService<CycleDTO, Integer>{
 
     @Override
     public CycleDTO readOne(Integer integer) throws ElementFoundException {
-        Cycle entity = cycleRepository.findById(integer)
+        Cycle_paiement entity = cycleRepository.findById(integer)
                 .orElseThrow(() -> new CycleFoundExeption(integer));
         return cycleMapper.toDTO(entity);
     }

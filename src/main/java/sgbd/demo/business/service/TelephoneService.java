@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import sgbd.demo.business.dto.TelephoneDTO;
 import sgbd.demo.business.mapper.Mapper;
 import sgbd.demo.data_access.entity.Telephone;
+import sgbd.demo.data_access.repository.SimRepository;
 import sgbd.demo.data_access.repository.TelephoneRepository;
 import sgbd.demo.exeption.ElementExisteExeption;
 import sgbd.demo.exeption.ElementFoundException;
@@ -23,19 +24,28 @@ public class TelephoneService implements CrudService<TelephoneDTO, Integer>{
     private Mapper<TelephoneDTO, Telephone> telephoneMapper;
     @Autowired
     private TelephoneRepository telephoneRepository;
+    @Autowired
+    private SimRepository simRepository;
 
     @Transactional
     public boolean siExiste (TelephoneDTO telephone){
         Optional<Telephone> numero = telephoneRepository.findByNtelephone(telephone.getNtelephone());
-        return numero.get().getNtelephone().equals(telephone.getNtelephone());
+       if(numero.isPresent()) {
+           return true;
+       }else{
+           return false;
+       }
     }
 
     @Override
     public void creat(TelephoneDTO toDTO) throws ElementExisteExeption {
+        System.out.println(toDTO);
         if(telephoneRepository.existsById(toDTO.getId()))
             throw new TelephoneExisteExeption(toDTO.getId());
 
-        telephoneRepository.save(telephoneMapper.toEntity(toDTO));
+        Telephone entity = telephoneMapper.toEntity(toDTO);
+        simRepository.save(entity.getSim());
+        telephoneRepository.save(entity);
     }
 
     @Override

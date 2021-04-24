@@ -34,9 +34,5 @@ public class Contrat {
 
     @ManyToOne
     @JoinColumn(name = "facturation")
-    private Cycle facturation;
-
-    @ManyToOne
-    @JoinColumn(name = "appartient")
-    private Personne appartient;
+    private Cycle_paiement facturation;
 }

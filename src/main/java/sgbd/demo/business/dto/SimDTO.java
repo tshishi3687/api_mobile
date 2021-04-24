@@ -20,5 +20,4 @@ public class SimDTO implements identifiedDTO<Integer>{
     private int codepuk2;
     private LocalDate datetermination;
     private String typecarte;
-    private TelephoneDTO msisdn;
 }

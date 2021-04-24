@@ -17,7 +17,6 @@ public class Sim {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "nsim")
     private int id;
 
     @Column
@@ -40,8 +39,4 @@ public class Sim {
 
     @Column
     private String typecarte;
-
-    @ManyToOne
-    @JoinColumn(name = "msisdn")
-    private Telephone msisdn;
 }

@@ -3,20 +3,27 @@ package sgbd.demo.business.mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sgbd.demo.business.dto.CycleDTO;
+import sgbd.demo.business.dto.Info_bancaireDTO;
 import sgbd.demo.business.dto.Mode_paiementDTO;
-import sgbd.demo.data_access.entity.Cycle;
+import sgbd.demo.data_access.entity.Cycle_paiement;
+import sgbd.demo.data_access.entity.Info_bancaire;
 import sgbd.demo.data_access.entity.Mode_paiement;
+import sgbd.demo.data_access.repository.Info_bancaireRepository;
 import sgbd.demo.data_access.repository.Mode_paiementRepository;
 
 @Component
-public class CycleMapper implements Mapper<CycleDTO, Cycle>{
+public class CycleMapper implements Mapper<CycleDTO, Cycle_paiement>{
 
     @Autowired
     private Mapper<Mode_paiementDTO, Mode_paiement> mode_paiementMapper;
     @Autowired
     private Mode_paiementRepository mode_paiementRepository;
+    @Autowired
+    private Mapper<Info_bancaireDTO, Info_bancaire> info_bancaireMapper;
+    @Autowired
+    private Info_bancaireRepository info_bancaireRepository;
     @Override
-    public CycleDTO toDTO(Cycle cycle) {
+    public CycleDTO toDTO(Cycle_paiement cycle) {
         if(cycle==null)
             return null;
 
@@ -24,20 +31,20 @@ public class CycleMapper implements Mapper<CycleDTO, Cycle>{
                 cycle.getId(),
                 cycle.getTempscycle(),
                 mode_paiementMapper.toDTO(cycle.getModepaiement()),
-                cycle.getInformation()
+                info_bancaireMapper.toDTO(cycle.getInformation())
         );
     }
 
     @Override
-    public Cycle toEntity(CycleDTO cycleDTO) {
+    public Cycle_paiement toEntity(CycleDTO cycleDTO) {
         if(cycleDTO==null)
             return null;
 
-        Cycle cycle = new Cycle();
+        Cycle_paiement cycle = new Cycle_paiement();
         cycle.setId(cycleDTO.getId());
         cycle.setTempscycle(cycleDTO.getTempscycle());
-        cycle.setModepaiement(mode_paiementRepository.getOne(cycleDTO.getModepaiement().getId()));
-        cycle.setInformation(cycleDTO.getInformation());
+        cycle.setModepaiement(mode_paiementMapper.toEntity(cycleDTO.getModepaiement()));
+        cycle.setInformation(info_bancaireMapper.toEntity(cycleDTO.getInformation()));
         return cycle;
     }
 }

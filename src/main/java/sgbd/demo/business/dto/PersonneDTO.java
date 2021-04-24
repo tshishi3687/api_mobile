@@ -15,9 +15,7 @@ public class PersonneDTO implements identifiedDTO<Integer>{
     private String prenompersonne;
     private String genrepersonne;
     private LocalDate datenaisspersonne;
-    private int nregistrenational;
+    private String nregistrenational;
     private String civilitepersonne;
     private AdresseDTO adressepersonne;
-    private String statutpersonne;
-    private String mdp;
 }

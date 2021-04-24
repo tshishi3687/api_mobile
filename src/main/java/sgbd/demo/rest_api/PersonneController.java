@@ -13,11 +13,7 @@ import java.util.List;
 public class PersonneController extends AbstractCrudController<PersonneDTO, Integer>{
     public PersonneController(CrudService<PersonneDTO, Integer> service){super(service);}
 
-    @PostMapping("/log")
-    @ResponseStatus(HttpStatus.OK)
-    public PersonneDTO getUser(@RequestBody PersonneDTO personneDTO){
-        return ((PersonneService)service).seloUser(personneDTO);
-    }
+
 
     @PostMapping("/seloNNational")
     @ResponseStatus(HttpStatus.OK)
@@ -28,6 +24,7 @@ public class PersonneController extends AbstractCrudController<PersonneDTO, Inte
     @PostMapping("/seloNompersonne")
     @ResponseStatus(HttpStatus.OK)
     public List<PersonneDTO> seloNompersonne(@RequestBody PersonneDTO personneDTO){
+
         return ((PersonneService)service).seloNompersonne(personneDTO);
     }
 

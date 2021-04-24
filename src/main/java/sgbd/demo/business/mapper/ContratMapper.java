@@ -8,7 +8,7 @@ import sgbd.demo.business.dto.CycleDTO;
 import sgbd.demo.business.dto.PersonneAdresseDTO;
 import sgbd.demo.data_access.entity.Abonnement;
 import sgbd.demo.data_access.entity.Contrat;
-import sgbd.demo.data_access.entity.Cycle;
+import sgbd.demo.data_access.entity.Cycle_paiement;
 import sgbd.demo.data_access.entity.Personne;
 import sgbd.demo.data_access.repository.Abonnementrepository;
 import sgbd.demo.data_access.repository.PersonnneRepository;
@@ -19,7 +19,7 @@ public class ContratMapper implements Mapper<ContratDTO, Contrat>{
     @Autowired
     private Mapper<AbonnementDTO, Abonnement> abonnementMapper;
     @Autowired
-    private Mapper<CycleDTO, Cycle> cycleMapper;
+    private Mapper<CycleDTO, Cycle_paiement> cycleMapper;
     @Autowired
     private Mapper<PersonneAdresseDTO, Personne> personneMapper;
     @Autowired
@@ -37,8 +37,7 @@ public class ContratMapper implements Mapper<ContratDTO, Contrat>{
                 contrat.getDatedebut(),
                 contrat.getDatefin(),
                 abonnementMapper.toDTO(contrat.getAbonnement()),
-                cycleMapper.toDTO(contrat.getFacturation()),
-                personneMapper.toDTO(contrat.getAppartient())
+                cycleMapper.toDTO(contrat.getFacturation())
         );
     }
 
@@ -51,9 +50,8 @@ public class ContratMapper implements Mapper<ContratDTO, Contrat>{
         contrat.setDatesignature(contratDTO.getDatesignature());
         contrat.setDatedebut(contratDTO.getDatedebut());
         contrat.setDatefin(contratDTO.getDatefin());
-        contrat.setAbonnement(abonnementRepository.getOne(contratDTO.getAbonnement().getId()));
+        contrat.setAbonnement(abonnementMapper.toEntity(contratDTO.getAbonnement()));
         contrat.setFacturation(cycleMapper.toEntity(contratDTO.getFacturation()));
-        contrat.setAppartient(personnneRepository.getOne(contratDTO.getAppartient().getId()));
         return contrat;
     }
 }

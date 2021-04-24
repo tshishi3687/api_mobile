@@ -17,5 +17,4 @@ public class ContratDTO implements identifiedDTO<Integer>{
     private LocalDate datefin;
     private AbonnementDTO abonnement;
     private CycleDTO facturation;
-    private PersonneAdresseDTO appartient;
 }

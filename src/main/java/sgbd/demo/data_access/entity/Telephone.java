@@ -20,4 +20,8 @@ public class Telephone {
 
     @Column
     private String ntelephone;
+
+    @ManyToOne
+    @JoinColumn(name = "sim")
+    private Sim sim;
 }

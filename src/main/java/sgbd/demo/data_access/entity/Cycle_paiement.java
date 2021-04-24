@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cycle {
+public class Cycle_paiement {
 
     @Id
     @GeneratedValue(strategy  = GenerationType.IDENTITY)
@@ -25,6 +25,7 @@ public class Cycle {
     @JoinColumn(name = "modepaiement")
     private Mode_paiement modepaiement;
 
-    @Column
-    private String information;
+    @ManyToOne
+    @JoinColumn(name = "information")
+    private Info_bancaire information;
 }

@@ -26,12 +26,10 @@ public class PersonneMapper implements Mapper<PersonneDTO, Personne>{
                 personne.getDatenaisspersonne(),
                 personne.getNregistrenational(),
                 personne.getCivilitepersonne(),
-                adresseMapper.toDTO(personne.getAdressepersonne()),
-                personne.getStatutpersonne(),
-                null
-
+                adresseMapper.toDTO(personne.getAdressepersonne())
         );
     }
+
 
     @Override
     public Personne toEntity(PersonneDTO personneDTO) {
@@ -42,12 +40,11 @@ public class PersonneMapper implements Mapper<PersonneDTO, Personne>{
         personne.setId(personne.getId());
         personne.setNompersonne(personneDTO.getNompersonne());
         personne.setPrenompersonne(personneDTO.getPrenompersonne());
+        personne.setGenrepersonne(personneDTO.getGenrepersonne());
         personne.setDatenaisspersonne(personneDTO.getDatenaisspersonne());
         personne.setNregistrenational(personneDTO.getNregistrenational());
         personne.setCivilitepersonne(personneDTO.getCivilitepersonne());
         personne.setAdressepersonne(adresseMapper.toEntity(personneDTO.getAdressepersonne()));
-        personne.setStatutpersonne("Client");
-        personne.setMdp(personneDTO.getMdp());
         return personne;
     }
 }

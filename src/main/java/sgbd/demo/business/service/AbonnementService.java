@@ -6,6 +6,8 @@ import sgbd.demo.business.dto.AbonnementDTO;
 import sgbd.demo.business.mapper.Mapper;
 import sgbd.demo.data_access.entity.Abonnement;
 import sgbd.demo.data_access.repository.Abonnementrepository;
+import sgbd.demo.data_access.repository.Service_activationRepository;
+import sgbd.demo.data_access.repository.Service_usageRepository;
 import sgbd.demo.data_access.repository.TelephoneRepository;
 import sgbd.demo.exeption.AbonnementExisteExeption;
 import sgbd.demo.exeption.AbonnementFoundExeption;
@@ -25,6 +27,10 @@ public class AbonnementService implements CrudService<AbonnementDTO, Integer>{
     private Mapper<AbonnementDTO, Abonnement> abonnementMapper;
     @Autowired
     private Abonnementrepository abonnementRepository;
+    @Autowired
+    private Service_activationRepository service_activationRepository;
+    @Autowired
+    private Service_usageRepository service_usageRepository;
 
 
     @Override
@@ -32,7 +38,11 @@ public class AbonnementService implements CrudService<AbonnementDTO, Integer>{
         if(abonnementRepository.existsById(toDTO.getId()))
             throw new AbonnementExisteExeption(toDTO.getId());
 
-        abonnementRepository.save(abonnementMapper.toEntity(toDTO));
+        Abonnement entity = abonnementMapper.toEntity(toDTO);
+        service_usageRepository.save(entity.getServiceusage());
+        service_activationRepository.save(entity.getServiceactivation());
+        telephoneRepository.save(entity.getMsisdn());
+        abonnementRepository.save(entity);
     }
     @Transactional
     public void creatNT(AbonnementDTO toDTO) throws ElementExisteExeption {

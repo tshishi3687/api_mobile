@@ -51,9 +51,9 @@ public class AbonnementMapper implements Mapper<AbonnementDTO, Abonnement>{
 
         Abonnement abonnement = new Abonnement();
                 abonnement.setId(abonnementDTO.getId());
-                abonnement.setMsisdn(telephoneRepository.getOne(abonnementDTO.getMsisdn().getId()));
-                abonnement.setServiceusage(service_usageRepository.getOne(abonnementDTO.getServiceusage().getId()));
-                abonnement.setServiceactivation(serviceactivationRepository.getOne(abonnementDTO.getServiceactivation().getId()));
+                abonnement.setMsisdn(telephoneMapper.toEntity(abonnementDTO.getMsisdn()));
+                abonnement.setServiceusage(service_usageMapper.toEntity(abonnementDTO.getServiceusage()));
+                abonnement.setServiceactivation(service_activationMapper.toEntity(abonnementDTO.getServiceactivation()));
                 abonnement.setDateactivation(abonnementDTO.getDateactivation());
         return abonnement;
     }
