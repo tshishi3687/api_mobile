@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import sgbd.demo.business.dto.PersonneDTO;
 import sgbd.demo.business.service.CrudService;
 import sgbd.demo.business.service.PersonneService;
+import sgbd.demo.exeption.ElementFoundException;
 
 import java.util.List;
 
@@ -32,5 +33,11 @@ public class PersonneController extends AbstractCrudController<PersonneDTO, Inte
     @ResponseStatus(HttpStatus.OK)
     public List<PersonneDTO> selonCPostal(@RequestBody PersonneDTO personneDTO){
         return ((PersonneService)service).selonCPostal(personneDTO);
+    }
+
+    @PutMapping("/modif")
+    @ResponseStatus(HttpStatus.OK)
+    public void updatee(@RequestBody PersonneDTO personneDTO) throws ElementFoundException {
+        ((PersonneService)service).updatee(personneDTO);
     }
 }

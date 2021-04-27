@@ -3,14 +3,15 @@ package sgbd.demo.business.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sgbd.demo.business.dto.CycleDTO;
+import sgbd.demo.business.dto.Info_bancaireDTO;
 import sgbd.demo.business.mapper.Mapper;
 import sgbd.demo.data_access.entity.Cycle_paiement;
+import sgbd.demo.data_access.entity.Info_bancaire;
 import sgbd.demo.data_access.repository.CycleRepository;
-import sgbd.demo.exeption.CycleExisteExeption;
-import sgbd.demo.exeption.CycleFoundExeption;
-import sgbd.demo.exeption.ElementExisteExeption;
-import sgbd.demo.exeption.ElementFoundException;
+import sgbd.demo.data_access.repository.Info_bancaireRepository;
+import sgbd.demo.exeption.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +22,10 @@ public class CycleService implements CrudService<CycleDTO, Integer>{
     private Mapper<CycleDTO, Cycle_paiement> cycleMapper;
     @Autowired
     private CycleRepository cycleRepository;
+    @Autowired
+    private Info_bancaireRepository info_bancaireRepository;
+    @Autowired
+    private Mapper<Info_bancaireDTO, Info_bancaire> info_bancaireMapper;
 
     @Override
     public void creat(CycleDTO toDTO) throws ElementExisteExeption {
@@ -29,6 +34,8 @@ public class CycleService implements CrudService<CycleDTO, Integer>{
 
         cycleRepository.save(cycleMapper.toEntity(toDTO));
     }
+
+
 
     @Override
     public CycleDTO readOne(Integer integer) throws ElementFoundException {

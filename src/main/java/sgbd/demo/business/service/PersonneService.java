@@ -2,9 +2,11 @@ package sgbd.demo.business.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sgbd.demo.business.dto.AdresseDTO;
 import sgbd.demo.business.dto.PersonneDTO;
 import sgbd.demo.business.dto.PersonneDeuxDTO;
 import sgbd.demo.business.mapper.Mapper;
+import sgbd.demo.data_access.entity.Adresse;
 import sgbd.demo.data_access.entity.Personne;
 import sgbd.demo.data_access.repository.AdresseRepository;
 import sgbd.demo.data_access.repository.PersonnneRepository;
@@ -31,6 +33,8 @@ public class PersonneService implements CrudService<PersonneDTO, Integer>{
     private AdresseRepository adresseRepository;
     @Autowired
     private AdresseService addrService;
+    @Autowired
+    private Mapper<AdresseDTO, Adresse> adresseMapper;
 
 
 
@@ -88,15 +92,28 @@ public class PersonneService implements CrudService<PersonneDTO, Integer>{
         if(!personneRepository.existsById(toUpdate.getId()))
             throw new PersonneFoundExeption(toUpdate.getId());
 
-        Personne entity = personneMapper.toEntity(toUpdate);
-        adresseRepository.save(entity.getAdressepersonne());
-        personneRepository.updatee(entity);
+    }
 
+    @Transactional
+    public void updatee(PersonneDTO toUpdate) throws ElementFoundException{
+        if(!personneRepository.existsById(toUpdate.getId()))
+            throw new PersonneFoundExeption(toUpdate.getId());
+        System.out.println(toUpdate);
+        Personne entity = personneMapper.toEntity(toUpdate);
+        personneRepository.updatee(
+                toUpdate.getNompersonne(),
+                toUpdate.getPrenompersonne(),
+                toUpdate.getGenrepersonne(),
+                toUpdate.getCivilitepersonne(),
+                adresseRepository.save(entity.getAdressepersonne()),
+                toUpdate.getId()
+                );
     }
 
     @Override
     public void delete(Integer toDelete) throws ElementFoundException {
         if(!personneRepository.existsById(toDelete))
             throw new PersonneFoundExeption(toDelete);
+        personneRepository.deleteById(toDelete);
     }
 }
