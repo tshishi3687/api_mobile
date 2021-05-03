@@ -6,17 +6,12 @@ import sgbd.demo.business.dto.SimDTO;
 import sgbd.demo.business.dto.TelephoneDTO;
 import sgbd.demo.data_access.entity.Sim;
 import sgbd.demo.data_access.entity.Telephone;
-import sgbd.demo.data_access.repository.SimRepository;
-
-import java.util.stream.Collectors;
 
 @Component
 public class TelephoneMapper implements Mapper<TelephoneDTO, Telephone>{
 
     @Autowired
     private Mapper<SimDTO, Sim> simMapper;
-    @Autowired
-    private SimRepository simRepository;
 
     @Override
     public TelephoneDTO toDTO(Telephone telephone) {

@@ -20,15 +20,9 @@ public class AbonnementMapper implements Mapper<AbonnementDTO, Abonnement>{
     @Autowired
     private Mapper<TelephoneDTO, Telephone> telephoneMapper;
     @Autowired
-    private TelephoneRepository telephoneRepository;
-    @Autowired
     private Mapper<Service_usageDTO, Service_usage> service_usageMapper;
     @Autowired
-    private Service_usageRepository service_usageRepository;
-    @Autowired
     private Mapper<Service_activationDTO, Service_activation> service_activationMapper;
-    @Autowired
-    private Service_activationRepository serviceactivationRepository;
 
     @Override
     public AbonnementDTO toDTO(Abonnement abonnement) {

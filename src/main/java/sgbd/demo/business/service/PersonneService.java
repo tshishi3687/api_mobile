@@ -2,11 +2,8 @@ package sgbd.demo.business.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sgbd.demo.business.dto.AdresseDTO;
 import sgbd.demo.business.dto.PersonneDTO;
-import sgbd.demo.business.dto.PersonneDeuxDTO;
 import sgbd.demo.business.mapper.Mapper;
-import sgbd.demo.data_access.entity.Adresse;
 import sgbd.demo.data_access.entity.Personne;
 import sgbd.demo.data_access.repository.AdresseRepository;
 import sgbd.demo.data_access.repository.PersonnneRepository;
@@ -26,15 +23,9 @@ public class PersonneService implements CrudService<PersonneDTO, Integer>{
     @Autowired
     private Mapper<PersonneDTO, Personne> personneMapper;
     @Autowired
-    private Mapper<PersonneDeuxDTO, Personne> personneDeuxMapper;
-    @Autowired
     private PersonnneRepository personneRepository;
     @Autowired
     private AdresseRepository adresseRepository;
-    @Autowired
-    private AdresseService addrService;
-    @Autowired
-    private Mapper<AdresseDTO, Adresse> adresseMapper;
 
 
 

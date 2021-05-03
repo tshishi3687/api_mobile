@@ -1,20 +1,11 @@
 package sgbd.demo.business.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sgbd.demo.business.dto.SimDTO;
-import sgbd.demo.business.dto.TelephoneDTO;
 import sgbd.demo.data_access.entity.Sim;
-import sgbd.demo.data_access.entity.Telephone;
-import sgbd.demo.data_access.repository.TelephoneRepository;
 
 @Component
 public class SimMapper implements Mapper<SimDTO, Sim>{
-
-    @Autowired
-    private Mapper<TelephoneDTO, Telephone> telephoneMapper;
-    @Autowired
-    private TelephoneRepository telephoneRepository;
 
     @Override
     public SimDTO toDTO(Sim sim) {

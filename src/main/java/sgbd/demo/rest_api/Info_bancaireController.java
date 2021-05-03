@@ -3,13 +3,9 @@ package sgbd.demo.rest_api;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import sgbd.demo.business.dto.Info_bancaireDTO;
-import sgbd.demo.business.dto.PersonneDTO;
 import sgbd.demo.business.service.CrudService;
 import sgbd.demo.business.service.Info_bancaireService;
-import sgbd.demo.business.service.PersonneService;
 import sgbd.demo.exeption.ElementExisteExeption;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("info_bancaire")

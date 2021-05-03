@@ -1,21 +1,11 @@
 package sgbd.demo.business.mapper;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import sgbd.demo.business.dto.ContratDTO;
 import sgbd.demo.business.dto.PersonneAdresseDTO;
-import sgbd.demo.data_access.entity.Contrat;
 import sgbd.demo.data_access.entity.Personne;
-import sgbd.demo.data_access.repository.ContratRepository;
 
 @Component
 public class PersonneAdresseMapper implements Mapper<PersonneAdresseDTO, Personne>{
-
-    @Autowired
-    private Mapper<ContratDTO, Contrat> contratMapper;
-
-    @Autowired
-    private ContratRepository contratRepository;
 
     @Override
     public PersonneAdresseDTO toDTO(Personne personne) {

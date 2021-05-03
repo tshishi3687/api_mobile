@@ -6,16 +6,12 @@ import sgbd.demo.business.dto.Info_bancaireDTO;
 import sgbd.demo.business.dto.PersonneDTO;
 import sgbd.demo.data_access.entity.Info_bancaire;
 import sgbd.demo.data_access.entity.Personne;
-import sgbd.demo.data_access.repository.PersonnneRepository;
 
 @Component
 public class Info_bancaireMapper implements Mapper<Info_bancaireDTO, Info_bancaire> {
 
     @Autowired
     private Mapper<PersonneDTO, Personne> personneMapper;
-
-    @Autowired
-    private PersonnneRepository personnneRepository;
 
     @Override
     public Info_bancaireDTO toDTO(Info_bancaire info_bancaire) {

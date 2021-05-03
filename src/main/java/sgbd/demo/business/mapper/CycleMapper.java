@@ -8,8 +8,6 @@ import sgbd.demo.business.dto.Mode_paiementDTO;
 import sgbd.demo.data_access.entity.Cycle_paiement;
 import sgbd.demo.data_access.entity.Info_bancaire;
 import sgbd.demo.data_access.entity.Mode_paiement;
-import sgbd.demo.data_access.repository.Info_bancaireRepository;
-import sgbd.demo.data_access.repository.Mode_paiementRepository;
 
 @Component
 public class CycleMapper implements Mapper<CycleDTO, Cycle_paiement>{
@@ -17,11 +15,7 @@ public class CycleMapper implements Mapper<CycleDTO, Cycle_paiement>{
     @Autowired
     private Mapper<Mode_paiementDTO, Mode_paiement> mode_paiementMapper;
     @Autowired
-    private Mode_paiementRepository mode_paiementRepository;
-    @Autowired
     private Mapper<Info_bancaireDTO, Info_bancaire> info_bancaireMapper;
-    @Autowired
-    private Info_bancaireRepository info_bancaireRepository;
     @Override
     public CycleDTO toDTO(Cycle_paiement cycle) {
         if(cycle==null)

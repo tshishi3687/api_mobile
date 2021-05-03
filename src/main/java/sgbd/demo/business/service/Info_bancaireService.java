@@ -3,10 +3,8 @@ package sgbd.demo.business.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import sgbd.demo.business.dto.Info_bancaireDTO;
-import sgbd.demo.business.dto.PersonneDTO;
 import sgbd.demo.business.mapper.Mapper;
 import sgbd.demo.data_access.entity.Info_bancaire;
-import sgbd.demo.data_access.entity.Personne;
 import sgbd.demo.data_access.repository.AdresseRepository;
 import sgbd.demo.data_access.repository.Info_bancaireRepository;
 import sgbd.demo.data_access.repository.PersonnneRepository;
@@ -20,8 +18,6 @@ import java.util.stream.Collectors;
 @Service
 public class Info_bancaireService implements CrudService<Info_bancaireDTO, Integer>{
 
-    @Autowired
-    private Mapper<PersonneDTO, Personne> personneMapper;
     @Autowired
     private PersonnneRepository personneRepository;
     @Autowired

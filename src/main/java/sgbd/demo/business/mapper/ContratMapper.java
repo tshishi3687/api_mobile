@@ -5,13 +5,9 @@ import org.springframework.stereotype.Component;
 import sgbd.demo.business.dto.AbonnementDTO;
 import sgbd.demo.business.dto.ContratDTO;
 import sgbd.demo.business.dto.CycleDTO;
-import sgbd.demo.business.dto.PersonneAdresseDTO;
 import sgbd.demo.data_access.entity.Abonnement;
 import sgbd.demo.data_access.entity.Contrat;
 import sgbd.demo.data_access.entity.Cycle_paiement;
-import sgbd.demo.data_access.entity.Personne;
-import sgbd.demo.data_access.repository.Abonnementrepository;
-import sgbd.demo.data_access.repository.PersonnneRepository;
 
 @Component
 public class ContratMapper implements Mapper<ContratDTO, Contrat>{
@@ -20,12 +16,6 @@ public class ContratMapper implements Mapper<ContratDTO, Contrat>{
     private Mapper<AbonnementDTO, Abonnement> abonnementMapper;
     @Autowired
     private Mapper<CycleDTO, Cycle_paiement> cycleMapper;
-    @Autowired
-    private Mapper<PersonneAdresseDTO, Personne> personneMapper;
-    @Autowired
-    private Abonnementrepository abonnementRepository;
-    @Autowired
-    private PersonnneRepository personnneRepository;
 
     @Override
     public ContratDTO toDTO(Contrat contrat) {

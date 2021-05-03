@@ -4,12 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sgbd.demo.business.dto.ContratDTO;
-import sgbd.demo.business.dto.Info_bancaireDTO;
 import sgbd.demo.business.dto.PersonneDTO;
 import sgbd.demo.business.mapper.Mapper;
 import sgbd.demo.data_access.entity.Contrat;
-import sgbd.demo.data_access.entity.Info_bancaire;
-import sgbd.demo.data_access.entity.Personne;
 import sgbd.demo.data_access.repository.*;
 import sgbd.demo.exeption.*;
 
@@ -37,16 +34,6 @@ public class ContratService implements CrudService<ContratDTO, Integer>{
     private Service_activationRepository service_activationRepository;
     @Autowired
     private Abonnementrepository abonnementrepository;
-    @Autowired
-    private Info_bancaireRepository info_bancaireRepository;
-    @Autowired
-    private Mapper<Info_bancaireDTO, Info_bancaire> info_bancaireMapper;
-    @Autowired
-    private Mapper<PersonneDTO, Personne> personneMapper;
-    @Autowired
-    private PersonnneRepository personneRepository;
-    @Autowired
-    private AdresseRepository adresseRepository;
 
     @Override
     public void creat(ContratDTO toDTO) throws ElementExisteExeption {

@@ -3,7 +3,6 @@ package sgbd.demo.business.mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sgbd.demo.business.dto.AdresseDTO;
-import sgbd.demo.business.dto.PersonneDTO;
 import sgbd.demo.business.dto.PersonneDeuxDTO;
 import sgbd.demo.data_access.entity.Adresse;
 import sgbd.demo.data_access.entity.Personne;

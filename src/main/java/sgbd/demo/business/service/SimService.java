@@ -6,7 +6,6 @@ import sgbd.demo.business.dto.SimDTO;
 import sgbd.demo.business.mapper.Mapper;
 import sgbd.demo.data_access.entity.Sim;
 import sgbd.demo.data_access.repository.SimRepository;
-import sgbd.demo.data_access.repository.TelephoneRepository;
 import sgbd.demo.exeption.ElementExisteExeption;
 import sgbd.demo.exeption.ElementFoundException;
 import sgbd.demo.exeption.SimExisteExeption;
